@@ -35,7 +35,7 @@
       </Pane>
       <Pane layoutX="200.0" layoutY="382.0" prefHeight="118.0" prefWidth="600.0" style="-fx-background-color: #2f2fa2;">
          <children>
-            <TextField layoutX="35.0" layoutY="44.0" prefHeight="31.0" prefWidth="399.0" />
+            <TextField fx:id="textMessage" layoutX="35.0" layoutY="44.0" prefHeight="31.0" prefWidth="399.0" />
             <Button fx:id="buttonSend" layoutX="455.0" layoutY="36.0" mnemonicParsing="false" onAction="#addMessage" prefHeight="45.0" prefWidth="124.0" text="  Send" textFill="#442da8">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
