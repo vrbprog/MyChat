@@ -39,7 +39,7 @@ public class Controller {
 //        area.setBorder(new Border(new BorderStroke(Color.BLACK,
 //                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         //Setting number of pages
-        area.setText(textMessage.getText());
+        area.setText(makeMes(textMessage.getText()));
         //area.setId("left-area");
         area.getStyleClass().add("left-area");
 //        area.setStyle("-fx-control-inner-background: pink;" +
@@ -49,12 +49,12 @@ public class Controller {
         //area.setStyle("-fx-background-radius: 15");
         //area.setStyle("-fx-border-radius: 15");
         //area.setPrefColumnCount(15);
-        area.setPrefHeight(30.0 * textMessage.getText().length()/25);
-        area.setPrefWidth(240);
+        area.setPrefHeight(24.0 * (textMessage.getText().length()/57.0 + 2));
+        area.setPrefWidth(340);
 
         FileInputStream input = null;
         try {
-            input = new FileInputStream("src/img/admin-user-icon-48.png");
+            input = new FileInputStream("src/img/blank-icon-48.png");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -64,6 +64,15 @@ public class Controller {
         //imageView.setStyle("-fx-padding: 15px;" + "-fx-border-insets: 15px;" + "-fx-background-insets: 15px;");
         flowChat.getChildren().add(imageView);
 
+        try {
+            input = new FileInputStream("src/img/male-user-icon-48.png");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Image image2 = new Image(input);
+        ImageView imageView2 = new ImageView(image2);
+        flowChat.getChildren().add(imageView2);
+
         flowChat.getChildren().add(area);
 
         //flowChat.layout();
@@ -71,6 +80,27 @@ public class Controller {
 
 
 
+    }
+
+    public String makeMes(String line){
+        StringBuilder builder = new StringBuilder(line);
+        int n = 54;
+        int num = 0;
+        int numCur = 0;
+        int delta = 0;
+        int len = line.length();
+        while((len - numCur) >= 57) {
+            do
+            {
+                numCur = num;
+                num = builder.indexOf(" ", num + 1);
+            }while (num < n - delta && num > numCur);
+            delta = n - numCur;
+            builder.insert(numCur, System.lineSeparator());
+            n += 56;
+            len += 2;
+        }
+        return builder.toString();
     }
 
 }
