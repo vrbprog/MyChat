@@ -17,6 +17,8 @@ import java.io.FileNotFoundException;
 
 public class Controller {
 
+    final int LENGTH = 57;
+
     @FXML
     private Button buttonSend;
 
@@ -49,8 +51,8 @@ public class Controller {
         //area.setStyle("-fx-background-radius: 15");
         //area.setStyle("-fx-border-radius: 15");
         //area.setPrefColumnCount(15);
-        area.setPrefHeight(24.0 * (textMessage.getText().length()/57.0 + 2));
-        area.setPrefWidth(340);
+        area.setPrefHeight(24.0 * (1.0*textMessage.getText().length()/LENGTH + 4));
+        area.setPrefWidth(358);
 
         FileInputStream input = null;
         try {
@@ -77,30 +79,27 @@ public class Controller {
 
         //flowChat.layout();
         scrollMes.setVvalue(1.0d);
-
-
-
     }
 
     public String makeMes(String line){
         StringBuilder builder = new StringBuilder(line);
-        int n = 54;
+        String time = "30-12-2020 11:45\n\r\n\r";
+        String user = "\n\r\t\t\t\t\t\t\t\t\t\tAlex";
+        int n = LENGTH-3;
         int num = 0;
         int numCur = 0;
         int delta = 0;
         int len = line.length();
-        while((len - numCur) >= 57) {
-            do
-            {
+        while((len - numCur) >= LENGTH) {
+            do{
                 numCur = num;
                 num = builder.indexOf(" ", num + 1);
             }while (num < n - delta && num > numCur);
             delta = n - numCur;
             builder.insert(numCur, System.lineSeparator());
-            n += 56;
+            n += LENGTH-5;
             len += 2;
         }
-        return builder.toString();
+        return time + "      " + builder.toString() + user;
     }
-
 }
