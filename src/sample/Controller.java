@@ -52,7 +52,7 @@ public class Controller {
         //area.setStyle("-fx-border-radius: 15");
         //area.setPrefColumnCount(15);
         area.setPrefHeight(22.0 * (1.0*textMessage.getText().length()/LENGTH + 5));
-        area.setPrefWidth(358);
+        area.setPrefWidth(356);
 
         FileInputStream input = null;
         try {
