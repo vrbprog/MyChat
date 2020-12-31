@@ -51,7 +51,7 @@ public class Controller {
         //area.setStyle("-fx-background-radius: 15");
         //area.setStyle("-fx-border-radius: 15");
         //area.setPrefColumnCount(15);
-        area.setPrefHeight(24.0 * (1.0*textMessage.getText().length()/LENGTH + 4));
+        area.setPrefHeight(22.0 * (1.0*textMessage.getText().length()/LENGTH + 5));
         area.setPrefWidth(358);
 
         FileInputStream input = null;
@@ -83,7 +83,7 @@ public class Controller {
 
     public String makeMes(String line){
         StringBuilder builder = new StringBuilder(line);
-        String time = "30-12-2020 11:45\n\r\n\r";
+        String time = "\t\t\t\t\t\t\t\t30-12-2020 11:45\n\r\n\r";
         String user = "\n\r\t\t\t\t\t\t\t\t\t\tAlex";
         int n = LENGTH-3;
         int num = 0;
